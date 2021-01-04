@@ -18,10 +18,6 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(ls, format);
-
-	if (format == NULL)
-		return (-1);
-
 	for (idx = 0; format[idx] != '\0'; idx++)
 	{
 		if (format[idx] == '%')
@@ -29,6 +25,7 @@ int _printf(const char *format, ...)
 			if (format[idx + 1] == '%')
 			{
 				write(1, &prc, 1);
+				sum += 1;
 				idx++;
 			}
 			else
@@ -49,12 +46,10 @@ int _printf(const char *format, ...)
 		else
 		{
 			write(1, &format[idx], 1);
+			sum += 1;
 		}
 	}
 	va_end(ls);
 
-	if (sum > 0)
-		idx = (idx - 2) + sum;
-
-	return (idx);
+	return (sum);
 }
