@@ -10,11 +10,13 @@ int (*get_spec(char *c))(va_list)
 	spec_t sps[] = {
 		{"c", sp_chr},
 		{"s", sp_str},
+		{"d", sp_dig},
+		{"i", sp_int},
 		{NULL, NULL}
 	};
 	int idx = 0;
 
-	while (idx < 2)
+	while (idx < 4)
 	{
 		if (*c == *sps[idx].op)
 			return (sps[idx].f);

@@ -16,7 +16,7 @@ int sp_chr(va_list ls)
 /**
  * sp_str - function to print a string.
  * @ls: list of arguments for get the string.
- * Return: On success, 1.
+ * Return: On success, the length of the string.
  */
 int sp_str(va_list ls)
 {
@@ -42,4 +42,30 @@ int sp_str(va_list ls)
 	}
 
 	return (idx);
+}
+
+
+/**
+ * sp_dig - function to print a integer.
+ * @ls: list of arguments for get integer.
+ * Return: On success, 1.
+ */
+int sp_dig(va_list ls)
+{
+	int x = va_arg(ls, int);
+
+	return (write(1, &x, 1));
+}
+
+
+/**
+ * sp_int - function to print a integer.
+ * @ls: list of arguments for get integer.
+ * Return: On success, 1.
+ */
+int sp_int(va_list ls)
+{
+	int x = va_arg(ls, int);
+
+	return (write(1, &x, 1));
 }
