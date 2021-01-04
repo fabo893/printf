@@ -21,12 +21,24 @@ int sp_chr(va_list ls)
 int sp_str(va_list ls)
 {
 	char *str = va_arg(ls, int);
+	char *non = "(null)";
 	int idx = 0;
 
-	while (str[idx] != '\0')
+	if (str == NULL)
 	{
-		write(1, &str[idx], 1);
-		idx++;
+		while (non[idx] != '\0')
+		{
+			write(1, &non[idx], 1);
+			idx++;
+		}
+	}
+	else
+	{
+		while (str[idx] != '\0')
+		{
+			write(1, &str[idx], 1);
+			idx++;
+		}
 	}
 
 	return (idx);
