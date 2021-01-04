@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				sp = format[idx + 1];
 				f = get_spec(&sp);
 				if (f == NULL)
-					write(1, &prc, 1);
+					sum += write(1, &prc, 1);
 				else
 				{
 					sum += f(ls);
