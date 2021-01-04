@@ -22,7 +22,9 @@ int _printf(const char *format, ...)
 	{
 		if (format[idx] == '%')
 		{
-			if (format[idx + 1] == '%')
+			if (format[idx + 1] == '\0')
+				return (-1);
+			else if (format[idx + 1] == '%')
 			{
 				write(1, &prc, 1);
 				sum += 1;
