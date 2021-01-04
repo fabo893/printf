@@ -8,15 +8,11 @@
 int _printf(const char *format, ...)
 {
 	va_list ls;
-	int idx;
-	int (*f)(va_list);
-	char prc = '%';
-	char sp;
-	int sum = 0;
+	int (*f)(va_list), idx, sum = 0;
+	char prc = '%',  sp;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(ls, format);
 	for (idx = 0; format[idx] != '\0'; idx++)
 	{
@@ -35,9 +31,7 @@ int _printf(const char *format, ...)
 				sp = format[idx + 1];
 				f = get_spec(&sp);
 				if (f == NULL)
-				{
 					write(1, &prc, 1);
-				}
 				else
 				{
 					sum += f(ls);
@@ -52,6 +46,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ls);
-
 	return (sum);
 }
