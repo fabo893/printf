@@ -10,10 +10,15 @@ int _printf(const char *format, ...)
 	va_list ls;
 	int idx;
 	int (*f)(va_list);
-	char prc;
+	char prc = '%';
 	char sp;
+	int sum = 0;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(ls, format);
+
 	if (format == NULL)
 		return (-1);
 
@@ -23,7 +28,6 @@ int _printf(const char *format, ...)
 		{
 			if (format[idx + 1] == '%')
 			{
-				prc = '%';
 				write(1, &prc, 1);
 				idx++;
 			}
@@ -31,8 +35,15 @@ int _printf(const char *format, ...)
 			{
 				sp = format[idx + 1];
 				f = get_spec(&sp);
-				f(ls);
-				idx++;
+				if (f == NULL)
+				{
+					write(1, &prc, 1);
+				}
+				else
+				{
+					sum += f(ls);
+					idx++;
+				}
 			}
 		}
 		else
@@ -41,6 +52,9 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ls);
+
+	if (sum > 0)
+		idx = (idx - 2) + sum;
 
 	return (idx);
 }

@@ -14,11 +14,11 @@ int (*get_spec(char *c))(va_list)
 	};
 	int idx = 0;
 
-	while (idx < 3)
+	while (idx < 2)
 	{
 		if (*c == *sps[idx].op)
-			break;
+			return (sps[idx].f);
 		idx++;
 	}
-	return (sps[idx].f);
+	return (NULL);
 }
