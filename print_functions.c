@@ -29,5 +29,5 @@ int sp_str(va_list ls)
 		idx++;
 	}
 
-	return (1);
+	return (idx);
 }
