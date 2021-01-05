@@ -46,7 +46,7 @@ int sp_str(va_list ls)
 
 
 /**
- * sp_dig - function to print a integer.
+ * sp_int - function to print a integer.
  * @ls: list of arguments for get integer.
  * Return: On success, 1.
  */
