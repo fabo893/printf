@@ -52,37 +52,44 @@ int sp_str(va_list ls)
  */
 int sp_int(va_list ls)
 {
-	int x = va_arg(ls, int), i = 0, a, idx;
+	long int x = va_arg(ls, int), i = 0, a, idx;
 	char minus = '-';
 	int *array;
 
-	if (x < 0)
+	if (x == 0)
 	{
-		_putchar(minus);
-		x = (x * -1);
+		_putchar(x + '0');
+		i = 1;
 	}
-
-	array = malloc(sizeof(int) * 20);
-	if (array == NULL)
-		return (-1);
-
-	idx = 0;
-	while (x != 0)
+	else
 	{
-		a = x % 10;
-		array[idx] = a;
-		x = x / 10;
-		idx++;
-	}
-	i = idx;
+		if (x < 0)
+		{
+			_putchar(minus);
+			x = (x * -1);
+		}
 
-	idx--;
-	while (idx > -1)
-	{
-		_putchar(array[idx] + '0');
+		array = malloc(sizeof(int) * 20);
+		if (array == NULL)
+			return (0);
+
+		idx = 0;
+		while (x != 0)
+		{
+			a = x % 10;
+			array[idx] = a;
+			x = x / 10;
+			idx++;
+		}
+		i = idx;
+
 		idx--;
+		while (idx > -1)
+		{
+			_putchar(array[idx] + '0');
+			idx--;
+		}
+		free(array);
 	}
-	free(array);
-
 	return (i);
 }
