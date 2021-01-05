@@ -10,7 +10,7 @@ int (*get_spec(char *c))(va_list)
 	spec_t sps[] = {
 		{"c", sp_chr},
 		{"s", sp_str},
-		{"d", sp_dig},
+		{"d", sp_int},
 		{"i", sp_int},
 		{NULL, NULL}
 	};

@@ -50,22 +50,39 @@ int sp_str(va_list ls)
  * @ls: list of arguments for get integer.
  * Return: On success, 1.
  */
-int sp_dig(va_list ls)
-{
-	int x = va_arg(ls, int);
-
-	return (write(1, &x, 1));
-}
-
-
-/**
- * sp_int - function to print a integer.
- * @ls: list of arguments for get integer.
- * Return: On success, 1.
- */
 int sp_int(va_list ls)
 {
-	int x = va_arg(ls, int);
+	int x = va_arg(ls, int), i = 0, a, idx;
+	char minus = '-';
+	int *array;
 
-	return (write(1, &x, 1));
+	if (x < 0)
+	{
+		_putchar(minus);
+		x = (x * -1);
+	}
+
+	array = malloc(sizeof(int) * 20);
+	if (array == NULL)
+		return (-1);
+
+	idx = 0;
+	while (x != 0)
+	{
+		a = x % 10;
+		array[idx] = a;
+		x = x / 10;
+		idx++;
+	}
+	i = idx;
+
+	idx--;
+	while (idx > -1)
+	{
+		_putchar(array[idx] + '0');
+		idx--;
+	}
+	free(array);
+
+	return (i);
 }

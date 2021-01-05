@@ -19,6 +19,8 @@ typedef struct specs
 	int (*f)(va_list);
 } spec_t;
 
+int _putchar(char c);
+
 /* PRINTF */
 int _printf(const char *format, ...);
 
