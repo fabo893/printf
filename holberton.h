@@ -28,5 +28,7 @@ int (*get_spec(char *c))(va_list);
 /* PRINT FUNCTIONS */
 int sp_chr(va_list ls);
 int sp_str(va_list ls);
+int sp_dig(va_list ls);
+int sp_int(va_list ls);
 
 #endif /* HOLBERTON_H */
