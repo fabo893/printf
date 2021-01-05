@@ -67,6 +67,7 @@ int sp_int(va_list ls)
 		{
 			_putchar(minus);
 			x = (x * -1);
+			i += 1;
 		}
 
 		array = malloc(sizeof(int) * 20);
@@ -81,7 +82,7 @@ int sp_int(va_list ls)
 			x = x / 10;
 			idx++;
 		}
-		i = idx;
+		i += idx;
 
 		idx--;
 		while (idx > -1)
@@ -91,5 +92,5 @@ int sp_int(va_list ls)
 		}
 		free(array);
 	}
-	return (i + 1);
+	return (i);
 }
