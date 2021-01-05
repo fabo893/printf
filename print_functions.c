@@ -91,5 +91,5 @@ int sp_int(va_list ls)
 		}
 		free(array);
 	}
-	return (i);
+	return (i + 1);
 }
